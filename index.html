@@ -1,0 +1,89 @@
++<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuidador</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="assets/images/logo.png" alt="Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link" data-target="home">Inicio</a></li>
+                <li><a href="#" class="nav-link" data-target="registro">Registro</a></li>
+                <li><a href="#" class="nav-link" data-target="pagos">Pagos</a></li>
+                <li><a href="#" class="nav-link" data-target="contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="content-section active">
+            <h1>Registro de Trabajo - Cuidado de Perros</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Horas Trabajadas</th>
+                        <th>Pago por Hora</th>
+                        <th>Total a Pagar</th>
+                        <th>Pago Adelantado</th>
+                        <th>Horas Pendientes</th>
+                        <th>Deuda por Horas Pendientes</th>
+                        <th>Saldo Pendiente</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="registroTableBody">
+                    <!-- Los registros se agregarán aquí dinámicamente -->
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="registro" class="content-section">
+            <h1>Agregar Registro</h1>
+            <form id="registroForm">
+                <label for="fecha">Fecha:</label>
+                <input type="text" id="fecha" name="fecha" class="flatpickr" required>
+                
+                <label for="horas">Horas Trabajadas:</label>
+                <input type="number" id="horas" name="horas" required>
+                
+                <label for="pagoAdelantado">Pago Adelantado:</label>
+                <input type="number" id="pagoAdelantado" name="pagoAdelantado">
+                
+                <button type="submit">Agregar Registro</button>
+            </form>
+        </section>
+        
+        <section id="pagos" class="content-section">
+            <h1>Pagos</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Pago Adelantado</th>
+                        <th>Total a Pagar</th>
+                        <th>Saldo Pendiente</th>
+                    </tr>
+                </thead>
+                <tbody id="pagosTableBody">
+                    <!-- Los pagos se agregarán aquí dinámicamente -->
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="contacto" class="content-section">
+            <h1>Contacto</h1>
+            <p>Información de contacto.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Cuidador. Todos los derechos reservados.</p>
+    </footer><script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
