@@ -3,6 +3,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const registroTableBody = document.getElementById('registroTableBody');
     const pagosTableBody = document.getElementById('pagosTableBody');
     const pagoPorHora = 5000;
+    const downloadPdfButton = document.getElementById('downloadPdf');
+
+downloadPdfButton.addEventListener('click', () => {
+    const doc = new jspdf.jsPDF();
+
+    doc.autoTable({
+        html: '#registroTableBody',
+        startY: 20,
+        headStyles: { fillColor: [44, 62, 80] },
+        alternateRowStyles: { fillColor: [242, 242, 242] },
+        columnStyles: { 0: { cellWidth: 20 } },
+        styles: { cellPadding: 2, fontSize: 8 },
+        head: [['Fecha', 'Horas Trabajadas', 'Pago por Hora', 'Total a Pagar', 'Pago Adelantado', 'Horas Pendientes', 'Deuda por Horas Pendientes', 'Saldo Pendiente', 'Estado']],
+    });
+
+    doc.text("Registro de Trabajo - Cuidado de Perros", 14, 15);
+    doc.save("registro_trabajo_cuidado_perros.pdf");
+});
 
     // Función para formatear números en el formato chileno
     const formatearNumeroChileno = (numero) => {

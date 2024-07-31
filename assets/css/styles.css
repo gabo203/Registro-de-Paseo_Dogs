@@ -196,3 +196,18 @@ footer {
         font-size: 14px;
     }
 }
+
+#downloadPdf {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#downloadPdf:hover {
+    background-color: #2980b9;
+}
