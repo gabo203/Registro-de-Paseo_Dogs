@@ -1,17 +1,23 @@
-+<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuidador</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <img src="assets/images/logo.png" alt="Logo" class="logo">
-        <nav>
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            
+        </div>
+        <nav class="nav-menu">
             <ul>
                 <li><a href="#" class="nav-link" data-target="home">Inicio</a></li>
                 <li><a href="#" class="nav-link" data-target="registro">Registro</a></li>
@@ -20,6 +26,7 @@
             </ul>
         </nav>
     </header>
+
     <main>
         <section id="home" class="content-section active">
             <h1>Registro de Trabajo - Cuidado de Perros</h1>
@@ -36,13 +43,12 @@
                         <th>Saldo Pendiente</th>
                         <th>Acciones</th>
                     </tr>
-                    <button id="downloadPdf">Descargar PDF</button>
-
                 </thead>
                 <tbody id="registroTableBody">
                     <!-- Los registros se agregarán aquí dinámicamente -->
                 </tbody>
             </table>
+            <button id="downloadPdf">Descargar</button>
         </section>
         
         <section id="registro" class="content-section">
@@ -83,9 +89,12 @@
             <p>Información de contacto.</p>
         </section>
     </main>
+
     <footer>
         <p>&copy; 2023 Cuidador. Todos los derechos reservados.</p>
-    </footer><script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
     <script src="assets/js/script.js"></script>

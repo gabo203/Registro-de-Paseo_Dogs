@@ -4,23 +4,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const pagosTableBody = document.getElementById('pagosTableBody');
     const pagoPorHora = 5000;
     const downloadPdfButton = document.getElementById('downloadPdf');
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const navMenu = document.querySelector('.nav-menu');
 
-downloadPdfButton.addEventListener('click', () => {
-    const doc = new jspdf.jsPDF();
+    hamburgerMenu.addEventListener('click', toggleMenu);
 
-    doc.autoTable({
-        html: '#registroTableBody',
-        startY: 20,
-        headStyles: { fillColor: [44, 62, 80] },
-        alternateRowStyles: { fillColor: [242, 242, 242] },
-        columnStyles: { 0: { cellWidth: 20 } },
-        styles: { cellPadding: 2, fontSize: 8 },
-        head: [['Fecha', 'Horas Trabajadas', 'Pago por Hora', 'Total a Pagar', 'Pago Adelantado', 'Horas Pendientes', 'Deuda por Horas Pendientes', 'Saldo Pendiente', 'Estado']],
+    document.addEventListener('click', (e) => {
+        if (!hamburgerMenu.contains(e.target) && !navMenu.contains(e.target)) {
+            closeMenu();
+        }
     });
 
-    doc.text("Registro de Trabajo - Cuidado de Perros", 14, 15);
-    doc.save("registro_trabajo_cuidado_perros.pdf");
-});
+    function toggleMenu() {
+        hamburgerMenu.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    }
+
+    function closeMenu() {
+        hamburgerMenu.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+
+    // Cerrar el menú al hacer clic en un enlace
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    downloadPdfButton.addEventListener('click', () => {
+        const doc = new jspdf.jsPDF();
+
+        doc.autoTable({
+            html: '#registroTableBody',
+            startY: 20,
+            headStyles: { fillColor: [44, 62, 80] },
+            alternateRowStyles: { fillColor: [242, 242, 242] },
+            columnStyles: { 0: { cellWidth: 20 } },
+            styles: { cellPadding: 2, fontSize: 8 },
+            columns: [
+                { header: 'Fecha', dataKey: 'fecha' },
+                { header: 'Horas Trabajadas', dataKey: 'horas' },
+                { header: 'Pago por Hora', dataKey: 'pagoPorHora' },
+                { header: 'Total a Pagar', dataKey: 'totalAPagar' },
+                { header: 'Pago Adelantado', dataKey: 'pagoAdelantado' },
+                { header: 'Horas Pendientes', dataKey: 'horasPendientes' },
+                { header: 'Deuda por Horas Pendientes', dataKey: 'deudaPorHorasPendientes' },
+                { header: 'Saldo Pendiente', dataKey: 'saldoPendiente' }
+            ],
+        });
+
+        doc.text("Registro de Trabajo - Cuidado de Perros", 14, 15);
+        doc.save("registro_trabajo_cuidado_perros.pdf");
+    });
 
     // Función para formatear números en el formato chileno
     const formatearNumeroChileno = (numero) => {
@@ -180,6 +214,7 @@ downloadPdfButton.addEventListener('click', () => {
             });
         });
     });
+
     flatpickr("#fecha", {
         dateFormat: "d/m/Y",
         altInput: true,
